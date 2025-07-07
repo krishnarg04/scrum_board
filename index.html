@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrum Board</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="./data/scrum.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Scrum Board</h1>
+            <div class="header-controls">
+                <button id="darkModeToggle" class="btn btn-toggle">
+                    <span class="toggle-text">Dark Mode</span>
+                    <span class="toggle-switch"></span>
+                </button>
+                <button id="blockModeToggle" class="btn btn-toggle">
+                    <span class="toggle-text">Block Mode</span>
+                    <span class="toggle-switch"></span>
+                </button>
+            </div>
+        </header>
+
+        <div class="task-creation-section">
+            <div class="task-form">
+                <select id="categorySelect" class="category-select">
+                    <option value="">Select Category</option>
+                </select>
+                <input type="text" id="taskInput" placeholder="Enter task description..." class="task-input">
+                <button id="addTaskBtn" class="btn btn-add">Add Task</button>
+            </div>
+            <div class="category-controls">
+                <button id="addCategoryBtn" class="btn btn-secondary">Add Category</button>
+                <button id="manageCategoriesBtn" class="btn btn-secondary">Manage Categories</button>
+            </div>
+        </div>
+
+        <div class="board" id="scrumBoard">
+            <div class="column" data-stage="todo">
+                <h2>To Do</h2>
+                <div class="task-list" id="todoList"></div>
+            </div>
+
+            <div class="column" data-stage="progress">
+                <h2>In Progress</h2>
+                <div class="task-list" id="progressList"></div>
+            </div>
+
+            <div class="column" data-stage="testing">
+                <h2>Testing</h2>
+                <div class="task-list" id="testingList"></div>
+            </div>
+
+            <div class="column" data-stage="completed">
+                <h2>Completed</h2>
+                <div class="task-list" id="completedList"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="categoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Category</h2>
+            <input type="text" id="categoryNameInput" placeholder="Category name..." class="modal-input">
+            <input type="color" id="categoryColorInput" value="#1a1a1a" class="color-input">
+            <div class="modal-buttons">
+                <button id="saveCategoryBtn" class="btn btn-primary">Save</button>
+                <button id="cancelCategoryBtn" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="manageCategoriesModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Manage Categories</h2>
+            <div id="categoriesList" class="categories-list"></div>
+            <button id="closeManageCategoriesBtn" class="btn btn-secondary">Close</button>
+        </div>
+    </div>
+
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Task Details</h2>
+            <div class="task-details">
+                <p><strong>ID:</strong> <span id="taskId"></span></p>
+                <p><strong>Category:</strong> <span id="taskCategory"></span></p>
+                <p><strong>Description:</strong></p>
+                <textarea id="taskDescription" class="task-description-textarea"></textarea>
+                <p><strong>Stage:</strong> <span id="taskStage"></span></p>
+                <p><strong>Created:</strong> <span id="taskCreated"></span></p>
+            </div>
+            <div class="modal-buttons">
+                <button id="saveTaskBtn" class="btn btn-primary">Save</button>
+                <button id="deleteTaskBtn" class="btn btn-danger">Delete</button>
+                <button id="closeTaskBtn" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
